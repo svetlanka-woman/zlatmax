@@ -26,7 +26,9 @@ function documentActions(e) {
       if (activeLink && activeLink !== targetElement) {
           activeLink.classList.remove('_submenu-active');
           activeBlock.classList.remove('_submenu-open');
+          document.documentElement.classList.remove('submenu-open');
       }
+      document.documentElement.classList.toggle('submenu-open');
       targetElement.classList.toggle('_submenu-active');
       submenu.classList.toggle('_submenu-open');
     } else {
@@ -38,5 +40,24 @@ function documentActions(e) {
       activeLink.classList.remove('_submenu-active');
       activeBlock.classList.remove('_submenu-open');
     }
+  }
+
+  if (targetElement.closest('.menu-top-header__link_catalog')) {
+    document.documentElement.classList.add('catalog-open');
+    e.preventDefault();
+  }
+
+  if (targetElement.closest('.menu-catalog__back')) {
+    document.documentElement.classList.remove('catalog-open');
+    activeLink ? activeLink.classList.remove('_submenu-active') : null;
+    activeBlock ? activeBlock.classList.remove('_submenu-open') : null;
+    e.preventDefault();
+  }
+
+  if (targetElement.closest('.submenu-catalog__back')) {
+    document.documentElement.classList.remove('submenu-open');
+    activeLink ? activeLink.classList.remove('_submenu-active') : null;
+    activeBlock ? activeBlock.classList.remove('_submenu-open') : null;
+    e.preventDefault();
   }
 }

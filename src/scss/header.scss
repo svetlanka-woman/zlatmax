@@ -4,12 +4,10 @@
 	&__top {
 		background-color: $mainDarkColor;
 		color: #fff;
-		padding: rem(10) 0;
 	}
 	// .header__body
 	&__body {
 		background-color: #ECF1F2;
-		padding: rem(10) 0;
 	}
 	// .header__catalog
 	&__catalog {
@@ -23,12 +21,17 @@
 //====================================================================================================
 
 .top-header {
+	padding: rem(10) 0;
 	// .top-header__container
 	&__container {
 		display: flex;
 		align-items: center;
 		gap: rem(20);
 		min-height: rem(50);
+		@media (max-width: $tablet){
+			gap: rem(35);
+			padding: 0 rem(17) 0 rem(26);
+		}
 	}
 	// .top-header__menu
 	&__menu {
@@ -40,9 +43,9 @@
 		font-size: rem(18);
 		font-weight: 600;
 		line-height: math.div(22 ,18);
+		gap: em(15, 18);
 		&::before{
 			font-size: rem(28);
-			margin-right: em(15, 28);
 		}
 		span {
 			transition: all 0.3s ease 0s;
@@ -52,6 +55,11 @@
 				span {
 					color: $mainOrange;
 				}
+			}
+		}
+		@media (max-width: $tablet){
+			span {
+				display: none;
 			}
 		}
 	}
@@ -90,6 +98,7 @@
 		}
 		&_catalog {
 			display: flex;
+			align-items: center;
 			flex-direction: row-reverse;
 			justify-content: space-between;
 			&::before {
@@ -102,7 +111,7 @@
 			}
 		}
 		@media (max-width: $tablet){
-			@include adaptiveValue("font-size", 20, 16, 992, 320, 1);
+			font-size: rem(18);
 		}
 	}
 }
@@ -119,14 +128,33 @@
 	&__body {
 		@media (max-width: $tablet) {
 			position: fixed;
-			width: 100%;
+			width: 287px;
 			height: 100%;
 			top: 0;
-			left: -100%;
+			right: -100%;
 			overflow: auto;
+			border-left: 1px solid #E8ECED;
 			background-color: $mainDarkColor;
 			padding: rem(80) rem(15) rem(50);
 			z-index: 4;
+			transition: all 0.3s ease 0s;
+			&::before {
+				content: "";
+				position: fixed;
+				width: 286px;
+				height: rem(70);
+				top: 0;
+				right: -100%;
+				background-color: $mainDarkColor;
+				z-index: 3;
+				transition: all 0.3s ease 0s;
+			}
+			.menu-open & {
+				right: 0;
+				&::before {
+					right: 0;
+				}
+			}
 		}
 	}
 }
@@ -136,24 +164,39 @@
 //====================================================================================================
 
 .body-header {
+	padding: rem(10) 0;
+	@media (max-width: $mobile){
+		padding: 0;
+	}
 	// .body-header__container
 	&__container {
 		display: flex;
 		align-items: center;
 		min-height: rem(70);
+		@media (max-width: $tablet){
+			padding: 0 rem(17) 0 rem(26);
+		}
+		@media (max-width: $mobileSmall){
+			padding: 0 rem(17) 0 rem(32); 
+		}
 	}
 	// .body-header__logo
 	&__logo {
 		@extend %ic;
 		@extend ._icon-logo;
-		// font-size: rem(42);
-		@include adaptiveValue("font-size", 42, 30);
+		font-size: rem(42);
+		// @include adaptiveValue("font-size", 42, 30);
 		color: #1F1C21;
 	}
 	// .body-header__search
 	&__search {
-		@include adaptiveValue("padding-left", 158, 20, 1620, 1400, 1);
 		flex: 1 1 auto;
+		@media (min-width: $mobileSmall){
+			@include adaptiveValue("padding-left", 158, 20, 1620, 1400, 1);
+		}
+		@media (min-width: $tablet){
+			padding-right: rem(20);
+		}
 	}
 	// .body-header__actions
 	&__actions {
@@ -165,8 +208,11 @@
 	border: 1px solid rgba(4, 4, 4, 0.5);
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 	position: relative;
-	@media (min-width:$tablet){
+	@media (min-width: $tablet){
 		max-width: rem(377);
+	}
+	@media (max-width: $mobileSmall){
+		background-color: #fff; 
 	}
 	// .search-header__button
 	&__button {
@@ -245,6 +291,25 @@
 	&__phone {
 		font-weight: 700;
 		line-height: math.div(22, 18);
+		white-space: nowrap;
+		&::before {
+			@extend %ic;
+			@extend ._icon-footer-phone;
+			display: none;
+		}
+		@media (max-width: $tablet){
+			font-size: rem(23);
+			font-weight: 500;
+		}
+		@media (max-width: $mobileSmall){
+			&::before {
+				display: block;
+				font-size: rem(27);
+			}
+			span {
+				display: none;
+			}
+		}
 	}
 	// .phones-header__arrow
 	&__arrow {
@@ -257,6 +322,9 @@
 		}
 		&._spoller-active {
 			transform: rotate(180deg);
+		}
+		@media (max-width:$tablet){
+			display: none;
 		}
 	}
 	// .phones-header__list
@@ -271,6 +339,9 @@
 		li {
 			margin: rem(5) rem(8);
 		}
+		@media (max-width:$tablet){
+			display: none;
+		}
 	}
 	// .phones-header__callback
 	&__callback {
@@ -282,6 +353,9 @@
 				text-decoration: underline;
 			}
 		}
+		@media (max-width:$tablet){
+			display: none;
+		}
 	}
 }
 .cart-header {
@@ -291,8 +365,12 @@
 	// .cart-header__icon
 	&__icon {
 		flex: 0 0 rem(37);
-		font-size: rem(35);
+		font-size: rem(33);
 		position: relative;
+		@media (max-width:$tablet){
+			font-size: rem(28);
+			flex: 0 0 rem(32);
+		}
 		span {
 			position: absolute;
 			background-color: $mainOrange;
@@ -306,6 +384,10 @@
 			top: 0;
 			right: 0;
 			display: flex;
+			@media (max-width:$tablet){
+				top: rem(-3);
+				right: rem(-1);
+			}
 		}
 	}
 	// .cart-header__body
@@ -338,6 +420,9 @@
 
 .catalog-header {
 	position: relative;
+	@media (max-width: $mobileSmall){
+		padding: rem(15) 0;
+	}
 	// .catalog-header__container
 	&__container {
 	}
@@ -346,22 +431,63 @@
 	}
 }
 .menu-catalog {
+	@media (max-width: $tablet){
+		position: fixed;
+		top: 0;
+		right: -100%;
+		height: 100%;
+		overflow: auto;
+		width: 287px;
+		border-left: 1px solid #E8ECED;
+		background-color: $mainDarkColor;
+		padding: rem(30) rem(15) rem(50);
+		transition: all 0.3s ease 0s;
+		z-index: 5;
+		.catalog-open & {
+			right: 0%;
+		}
+	}
 	// .menu-catalog__list
 	&__list {
 		display: flex;
 		justify-content: space-between;
+		@media (max-width: $tablet){
+			flex-direction: column;
+			row-gap: rem(20);
+		}
 	}
 	// .menu-catalog__item
 	&__item {
+
 	}
 	// .menu-catalog__link
 	&__link {
-		min-height: rem(70);
 		display: flex;
 		align-items: center;
-		margin: 0 rem(10);
 		position: relative;
 		transition: all 0.3s ease 0s;
+		&[data-parent-submenu] {
+			&::before {
+					@extend %ic;
+					@extend ._icon-arrow-bottom;
+					display: none;
+				}
+			@media (max-width: $tablet){
+				display: flex;
+				width: 100%;
+				align-items: center;
+				flex-direction: row-reverse;
+				justify-content: space-between;
+				&::before {
+					transform: rotate(-90deg);
+					font-size: rem(8);
+					flex: 0 0 rem(14);
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+		}
 		&::after {
 			content: "";
 			visibility: hidden;
@@ -382,24 +508,50 @@
 				}
 			}
 		}
-		&._submenu-active {
-			color: $mainOrange;
+		@media (min-width: $tablet){
+			min-height: rem(70);
+			margin: 0 rem(10);
+			&._submenu-active {
+				color: $mainOrange;
 				&::after {
 					visibility: visible;
 					opacity: 1;
 				}
-		}
+			}
+		}		
 	}
 	// .menu-catalog__submenu
 	&__submenu {
 		width: 100%;
-		left: 0;
+		right: 0;
 		top: 100%;
 		position: absolute;
 		background-color: $mainDarkColor;
 	}
+	// .menu-catalog__back
+	&__back {
+	}
 }
 .submenu-catalog {
+	@media (max-width: $tablet){
+		position: fixed;
+		top: 0;
+		right: -100%;
+		height: 100%;
+		overflow: auto;
+		width: 287px;
+		border-left: 1px solid #E8ECED;
+		background-color: $mainDarkColor;
+		padding: rem(30) rem(15) rem(50);
+		transition: all 0.3s ease 0s;
+		z-index: 5;
+		.submenu-open & {
+			right: 0%;
+		}
+	}
+	// .submenu-catalog__back
+	&__back {
+	}
 	// .submenu-catalog__container
 	&__container {
 	}	
@@ -408,20 +560,26 @@
 		display: none;
 		@for $var from 1 to 6 {
 			&_#{$var} {
-				// justify-content: start;
-				grid-template-columns: repeat($var, minmax(auto, rem(320)));
+				grid-template-columns: repeat($var, minmax(rem(192), rem(320)));
 			}
 		}
 		&._submenu-open {
 			display: grid;
+			@media (max-width: $tablet){
+				display: block;
+			}
 		}
 	}
 	// .submenu-catalog__category
 	&__category {
-		font-weight: 700;
-		font-size: rem(16);
+		font-size: rem(18);
 		line-height: math.div(20, 16);
-		padding: rem(30) rem(10);
+		padding: 0 0 rem(20) 0;
+		@media (min-width: $tablet){
+			padding: rem(30) rem(10);
+			font-weight: 700;
+			font-size: rem(16);
+		}
 	}
 	// .submenu-catalog__list
 	&__list { 
@@ -431,6 +589,9 @@
 		padding: rem(30) rem(10);
 		border-top: 1px solid rgba(255, 255, 255, 0.3);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+		@media (max-width: $tablet){
+			display: none;
+		}
 	}
 	// .submenu-catalog__item
 	&__item {
@@ -448,6 +609,9 @@
 	// .submenu-catalog__footer
 	&__footer {
 		padding: rem(30) rem(10);
+		@media (max-width: $tablet){
+			display: none;
+		}
 	}
 	// .submenu-catalog__all
 	&__all {
@@ -462,6 +626,19 @@
 	}
 }
 
+._icon-back {
+	display: none;
+	@media (max-width: $tablet){
+		display: inline-flex;
+		align-items: center;
+		font-size: rem(16);
+		margin-bottom: em(31, 16);
+		&::before {
+			margin-right: em(13, 16);
+		}
+	}
+}
+
 //====================================================================================================
 //Burger
 //====================================================================================================
@@ -471,10 +648,10 @@
 	@media (max-width: $tablet) {
 		display: block;
 		position: relative;
-		width: rem(30);
-		height: rem(18);
+		width: rem(28);
+		height: rem(19);
 		cursor: pointer;
-		z-index: 5;
+		z-index: 10;
 		span,
 		&::before,
 		&::after {
@@ -483,7 +660,8 @@
 			right: 0;
 			position: absolute;
 			width: 100%;
-			height: rem(2);
+			height: rem(3);
+			border-radius: 10px;
 			background-color: #fff;
 		}
 		&::before {
@@ -504,12 +682,14 @@
 			&::after {
 			}
 			&::before {
-				top: calc(50% - rem(1));
-				transform: rotate(-45deg);
+				width: rem(22);
+				top: calc(50% - rem(1.5));
+				transform: translateX(rem(2)) rotate(-45deg);
 			}
 			&::after {
-				bottom: calc(50% - rem(1));
-				transform: rotate(45deg);
+				width: rem(22);
+				bottom: calc(50% - rem(1.5));
+				transform: translateX(rem(2)) rotate(45deg);
 			}
 		}
 	}
