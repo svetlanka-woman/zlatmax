@@ -502,13 +502,15 @@
 		@media (any-hover: hover) {
 			&:hover {
 				color: $mainOrange;
+			}
+		}
+		@media (min-width: $tablet){
+			&:hover {
 				&::after {
 					visibility: visible;
 					opacity: 1;
 				}
 			}
-		}
-		@media (min-width: $tablet){
 			min-height: rem(70);
 			margin: 0 rem(10);
 			&._submenu-active {
@@ -525,7 +527,7 @@
 		width: 100%;
 		right: 0;
 		top: 100%;
-		position: absolute;
+		// position: absolute;
 		background-color: $mainDarkColor;
 	}
 	// .menu-catalog__back
@@ -554,6 +556,7 @@
 	}
 	// .submenu-catalog__container
 	&__container {
+		padding: 0;
 	}	
 	// .submenu-catalog__block
 	&__block {
@@ -575,6 +578,11 @@
 		font-size: rem(18);
 		line-height: math.div(20, 16);
 		padding: 0 0 rem(20) 0;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $mainOrange;
+			}
+		}
 		@media (min-width: $tablet){
 			padding: rem(30) rem(10);
 			font-weight: 700;
