@@ -2,9 +2,10 @@
 // Снипет (HTML): btn
 
 .button {
-	display: inline-flex;
+	display: inline-block;
 	font-weight: 600;
 	font-size: rem(20);
+	text-align: center;
 	color: #fff;
 	padding: rem(8) rem(52);
 	line-height: math.div(32, 20);
@@ -16,6 +17,9 @@
 		&:hover {
 			box-shadow: 0px 4px 30px rgba(232, 170, 49, 0.73);
 		}
+	}
+	@media (max-width: $mobileSmall){
+		width: 100%;
 	}
 	// &._fw {
 	// 	width: 100%;

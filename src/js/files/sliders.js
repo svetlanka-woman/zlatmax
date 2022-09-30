@@ -7,9 +7,9 @@
 // Подключаем слайдер Swiper из node_modules
 // При необходимости подключаем дополнительные модули слайдера, указывая их в {} через запятую
 // Пример: { Navigation, Autoplay }
-import Swiper, { Navigation } from 'swiper';
+import Swiper, { Navigation, Pagination, Parallax, Autoplay } from 'swiper';
 /*
-Основниые модули слайдера:
+Основные модули слайдера:
 Navigation, Pagination, Autoplay, 
 EffectFade, Lazy, Manipulation
 Подробнее смотри https://swiperjs.com/
@@ -27,41 +27,41 @@ import "../../scss/base/swiper.scss";
 function initSliders() {
 	// Перечень слайдеров
 	// Проверяем, есть ли слайдер на стронице
-	if (document.querySelector('.swiper')) { // Указываем скласс нужного слайдера
+	if (document.querySelector('.main-block__slider')) { // Указываем класс нужного слайдера
 		// Создаем слайдер
-		new Swiper('.swiper', { // Указываем скласс нужного слайдера
+		new Swiper('.main-block__slider', { // Указываем класс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
-			modules: [Navigation],
+			modules: [Navigation, Pagination, Parallax, Autoplay],
 			observer: true,
 			observeParents: true,
 			slidesPerView: 1,
-			spaceBetween: 0,
-			autoHeight: true,
+			spaceBetween: 50,
+			// autoHeight: true,
 			speed: 800,
-
+			parallax: true,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
 			//touchRatio: 0,
 			//simulateTouch: false,
-			//loop: true,
+			loop: true,
 			//preloadImages: false,
 			//lazy: true,
 
 			/*
 			// Эффекты
 			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
+			
 			*/
 
 			// Пагинация
-			/*
 			pagination: {
-				el: '.swiper-pagination',
+				el: '.controll-main-block__dotts',
 				clickable: true,
+				type: 'bullets'
 			},
-			*/
 
 			// Скроллбар
 			/*
@@ -70,12 +70,6 @@ function initSliders() {
 				draggable: true,
 			},
 			*/
-
-			// Кнопки "влево/вправо"
-			navigation: {
-				prevEl: '.swiper-button-prev',
-				nextEl: '.swiper-button-next',
-			},
 
 			// Брейкпоинты
 			/*
@@ -101,7 +95,15 @@ function initSliders() {
 			*/
 			// События
 			on: {
-
+				init: function () { 
+					const fractionAll = document.querySelector('.fraction-control__all');
+					fractionAll.innerHTML = document.querySelectorAll('.slide-main-block:not(.swiper-slide-duplicate)').length;
+				},
+				slideChange: function(swiper) {
+					const fractionCurrent = document.querySelector('.fraction-control__current'),
+								currentIndex = swiper.realIndex + 1;
+					fractionCurrent.innerHTML = currentIndex < 10 ? `0${currentIndex}` : currentIndex;
+				}
 			}
 		});
 	}
