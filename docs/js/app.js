@@ -6229,7 +6229,7 @@
             },
             loop: true,
             pagination: {
-                el: ".controll-main-block__dotts",
+                el: ".control-main-block__dotts",
                 clickable: true,
                 type: "bullets"
             },
