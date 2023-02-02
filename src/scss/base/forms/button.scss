@@ -7,7 +7,7 @@
 	font-size: rem(20);
 	text-align: center;
 	color: #fff;
-	padding: rem(8) rem(52);
+	padding: rem(8);
 	line-height: math.div(32, 20);
 	background: $mainOrange;
 	box-shadow: 0px 4px 20px rgba(232, 170, 49, 0.43);
@@ -21,7 +21,7 @@
 	@media (max-width: $mobileSmall){
 		width: 100%;
 	}
-	// &._fw {
-	// 	width: 100%;
-	// }
+	&._fw {
+		width: 100%;
+	}
 }

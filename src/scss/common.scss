@@ -1,1 +1,45 @@
 // Заголовки, общие БЄМ блоки и проче...
+
+.dotts {
+  display: flex;
+  gap: rem(17);
+  padding-left: rem(2);
+  .swiper-pagination-bullet {
+    position: relative;
+    cursor: pointer;
+    width: rem(18);
+    height: rem(20);
+    transition: all 0.3s ease 0s;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 64%;
+      left: 0;
+      height: rem(2);
+      width: 100%;
+      background-color: #fff;
+    }
+    &::before {
+      content: "";
+      background-color: $mainOrange;
+      width: rem(10);
+      height: rem(10);
+      border-radius: 50%;
+      position: absolute;
+      top: 44%;
+      left: rem(-2);
+      opacity: 0;
+      transition: left 3s linear 0s;
+    }
+  }
+  .swiper-pagination-bullet-active {
+    width: rem(28);
+    &::after {
+      background-color: $mainOrange;
+    }
+    &::before {
+      left: rem(20);
+      opacity: 1;
+    }
+  }
+}

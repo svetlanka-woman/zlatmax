@@ -107,6 +107,162 @@ function initSliders() {
 			}
 		});
 	}
+	if (document.querySelector('.products-slider__slider')) { // Указываем класс нужного слайдера
+		// Создаем слайдер
+		new Swiper('.products-slider__slider', { // Указываем класс нужного слайдера
+			// Подключаем модули слайдера
+			// для конкретного случая
+			modules: [Navigation, Pagination, Autoplay],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 4,
+			spaceBetween: 30,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
+			// autoHeight: true,
+			speed: 800,
+			// parallax: true,
+			//touchRatio: 0,
+			//simulateTouch: false,
+			loop: true,
+			//preloadImages: false,
+			//lazy: true,
+
+			/*
+			// Эффекты
+			effect: 'fade',
+			
+			*/
+
+			// Пагинация
+			pagination: {
+				el: '.products-slider__dotts',
+				clickable: true,
+				type: 'bullets'
+			},
+
+			// Скроллбар
+			/*
+			scrollbar: {
+				el: '.swiper-scrollbar',
+				draggable: true,
+			},
+			*/
+
+			// Брейкпоинты
+			breakpoints: {
+				320: {
+					slidesPerView: 1,
+					spaceBetween: 10,
+				},
+				490: {
+					slidesPerView: 1.5,
+					spaceBetween: 15,
+				},
+				680: {
+					slidesPerView: 2,
+					spaceBetween: 15,
+				},
+				890: {
+					slidesPerView: 2.5,
+					spaceBetween: 20,
+				},
+				992: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				},
+				1370: {
+					slidesPerView: 4,
+					spaceBetween: 30,
+				},
+			},
+
+			// События
+			on: {
+				
+			}
+		});
+	}
+	if (document.querySelector('.new-products__slider')) { // Указываем класс нужного слайдера
+		// Создаем слайдер
+		new Swiper('.new-products__slider', { // Указываем класс нужного слайдера
+			// Подключаем модули слайдера
+			// для конкретного случая
+			modules: [Navigation, Pagination, Autoplay],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 3,
+			spaceBetween: 28,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
+			// autoHeight: true,
+			speed: 800,
+			// parallax: true,
+			//touchRatio: 0,
+			//simulateTouch: false,
+			loop: true,
+			//preloadImages: false,
+			//lazy: true,
+
+			/*
+			// Эффекты
+			effect: 'fade',
+			
+			*/
+
+			// Пагинация
+			pagination: {
+				el: '.new-products__dotts',
+				clickable: true,
+				type: 'bullets'
+			},
+
+			// Скроллбар
+			/*
+			scrollbar: {
+				el: '.swiper-scrollbar',
+				draggable: true,
+			},
+			*/
+
+			// Брейкпоинты
+			breakpoints: {
+				320: {
+					slidesPerView: 1,
+					spaceBetween: 15,
+				},
+				490: {
+					slidesPerView: 1.5,
+					spaceBetween: 15,
+				},
+				641: {
+					slidesPerView: 1,
+					spaceBetween: 20,
+				},
+				800: {
+					slidesPerView: 1.5,
+					spaceBetween: 24
+				},
+				992: {
+					slidesPerView: 2,
+					spaceBetween: 28,
+				},
+				1300: {
+					slidesPerView: 3,
+					spaceBetween: 28,
+				},
+			},
+
+			// События
+			on: {
+				
+			}
+		});
+	}	
 }
 // Скролл на базе слайдера (по классу swiper_scroll для оболочки слайдера)
 function initSlidersScroll() {
