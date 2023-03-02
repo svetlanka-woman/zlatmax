@@ -86,6 +86,7 @@
 .product-card {
   display: grid;
   height: 100%;
+  position: relative;
   grid-template-rows: auto 1fr;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -94,6 +95,18 @@
     &:hover{
       box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.3);
     }
+  }
+  // .product-card__sale
+  &__sale {
+    position: absolute;
+    top: rem(20);
+    left: 0;
+    padding: rem(6) rem(22);
+    background-color: $mainOrange;
+    color: #fff;
+    font-weight: 600;
+    z-index: 5;
+    pointer-events: none;
   }
   // .product-card__image-link
   &__image-link {

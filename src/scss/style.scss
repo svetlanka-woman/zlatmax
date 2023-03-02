@@ -138,6 +138,12 @@ body {
 
 // Подключение стилей отдельных страниц
 @import "page-home";
+@import "catalog";
 
-// .page {
-// }
+.page {
+	// page-inner
+	&_inner {
+		padding-top: rem(30);
+		@include adaptiveValue("padding-bottom", 120, 40);
+	}
+}

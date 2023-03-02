@@ -58,7 +58,7 @@
 	&__options {
 		color: #000;
 		position: absolute;
-		top: 29px;
+		top: rem(29);
 		border-radius: 0 0 4px 4px;
 		min-width: 100%;
 		left: 0;
@@ -66,7 +66,7 @@
 		border-top: 0;
 		border: 1px solid #d9d9d9;
 		border-top: 0;
-		padding: 10px 0px 5px 0px;
+		padding: rem(10) 0px rem(5) 0px;
 	}
 	// .select__scroll
 	&__scroll {
@@ -87,7 +87,7 @@
 		display: block;
 		text-align: left;
 		cursor: pointer;
-		padding: 5px 15px;
+		padding: rem(5) rem(15);
 		color: inherit;
 		&._select-selected {
 			background-color: #eee;
@@ -111,7 +111,7 @@
 
 	// Состояния селекта
 	&._select-open {
-		z-index: 5;
+		z-index: 10;
 	}
 	&._select-disabled {
 	}
@@ -122,6 +122,42 @@
 	&._select-multiple {
 	}
 	&._select-checkbox {
+	}
+	&_control {
+		width: rem(375);
+		@media (max-width: $mobileSmall) {
+			width: 100%;
+		}
+		.select__title {
+			border: 1px solid rgba(4, 4, 4, 0.3);
+			border-radius: 3px;
+		}
+		.select__value {
+			height: rem(38);
+			font-weight: 500;
+			font-size: rem(16);
+			line-height: math.div(20, 16);
+			color: rgba(0, 0, 0, 0.5);
+			padding: 0 rem(20);
+			&::after {
+				content: "\e90e";
+				@extend %ic;
+				font-size: rem(8);
+			}
+		}
+		.select__options {
+			border-color: rgba(4, 4, 4, 0.3);
+		}
+		.select__option {
+			color: rgba(0, 0, 0, 0.5);
+			font-size: rem(16);
+			padding: rem(5) rem(20);
+			@media (any-hover: hover){
+				&:hover{
+					color: rgba(0, 0, 0, 0.8);
+				}
+			}
+		}
 	}
 }
 

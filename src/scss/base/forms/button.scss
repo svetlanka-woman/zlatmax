@@ -24,4 +24,10 @@
 	&._fw {
 		width: 100%;
 	}
+	&_border {
+		border: 1px solid $mainOrange;
+		color: $mainOrange;
+		background-color: #fff;
+		box-shadow: none;
+	}
 }
